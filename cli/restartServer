@@ -1,6 +1,8 @@
 #!/bin/bash
 imageName='mooncake001/sz-server:latest'
-
+serverName='sz-test'
+outport=3333
 sshpass -p $SERVER_PWD ssh -o StrictHostKeyChecking=no root@$SERVER_IP
 docker pull $imageName
-docker run -p 3333:3333 -d --name sz-test $imageName
+docker stop $serverName
+docker run -p $outport:3333 -d --rm --name $serverName $imageName
