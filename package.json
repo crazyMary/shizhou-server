@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "./node_modules/.bin/nodemon bin/www",
-    "prd": "pm2 start bin/www"
+    "prd": "node bin/www"
   },
   "dependencies": {
     "debug": "^4.1.1",
