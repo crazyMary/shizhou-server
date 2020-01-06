@@ -18,5 +18,9 @@ branches:
     - /^dev\/.*$/
     - master
 
+before_install:
+  - sudo apt-get -y install sshpass
+
 script:
-  - ./buildImage
+  - ./cli/buildImage
+  - ./cli/restartServer
