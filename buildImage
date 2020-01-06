@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin
-docker build -t mooncake001/server:latest .
-docker push mooncake001/server:latest
+docker build -t mooncake001/sz-server:latest .
+docker push mooncake001/sz-server:latest
 
 echo 'image done!'
