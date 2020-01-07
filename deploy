@@ -1,3 +1,11 @@
 #!/bin/bash
 
-sshpass -p $SERVER_PWD scp -o StrictHostKeyChecking=no -r ./* root@$SERVER_IP:/root/server/sz/test/
+if [ $TRAVIS_BRANCH = master ]; then
+  dir=/root/html/sz/production
+else 
+  dir=/root/html/sz/dev
+fi
+
+sshpass -p $SERVER_PWD scp -o StrictHostKeyChecking=no -r ./* root@$SERVER_IP:$dir
+
+echo 'deploy ok'
