@@ -1,0 +1,13 @@
+git:
+  quiet: true
+
+branches:
+  only:
+    - /^dev\/.*$/
+    - master
+
+before_install:
+  - sudo apt-get -y install sshpass
+
+script:
+  - ./deploy
