@@ -1,9 +1,9 @@
 #!/bin/bash
 
 if [ $TRAVIS_BRANCH = master ]; then
-  dir=/root/html/sz/production
+  dir=/root/server/sz/production
 else 
-  dir=/root/html/sz/dev
+  dir=/root/server/sz/dev
 fi
 
 sshpass -p $SERVER_PWD scp -o StrictHostKeyChecking=no -r ./* root@$SERVER_IP:$dir
