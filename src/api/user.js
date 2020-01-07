@@ -1,6 +1,6 @@
 const router = require('koa-router')()
 
 router.get('/login', ctx => {
-  ctx.body = 'login!'
+  ctx.body = 'logining'
 })
 module.exports = router.routes()

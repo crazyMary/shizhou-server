@@ -9,5 +9,15 @@ branches:
 before_install:
   - sudo apt-get -y install sshpass
 
-script:
-  - ./deploy
+install: skip
+
+before_script: skip
+
+script: skip
+
+deploy:
+  provider: script
+  script: ./deploy
+  on:
+    tags: true
+    all_branches: true
