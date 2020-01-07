@@ -19,5 +19,4 @@ deploy:
   provider: script
   script: ./deploy
   on:
-    tags: true
     all_branches: true
