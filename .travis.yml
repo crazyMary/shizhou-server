@@ -15,8 +15,5 @@ before_script: skip
 
 script: skip
 
-deploy:
-  provider: script
-  script: ./deploy
-  on:
-    all_branches: true
+after_success:
+  - ./deploy
