@@ -4,8 +4,11 @@ const json = require('koa-json')
 const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
-
+const cors = require('koa2-cors')
+const koajwt = require('koa-jwt')
+const netgate = require('./middleware/netgate')
 const api = require('./api')
+const { cors: corsconf, jwt: jwtconf } = require('./module/conf')
 
 // error handler
 onerror(app)
@@ -18,6 +21,9 @@ app.use(
 )
 app.use(json())
 app.use(logger())
+app.use(cors(corsconf))
+app.use(netgate)
+app.use(koajwt({ secret: jwtconf.secret }).unless({ path: [/login$/] }))
 
 // logger
 app.use(async (ctx, next) => {
