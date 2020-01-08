@@ -7,13 +7,14 @@ module.exports = {
   },
   cors: {
     origin: function(ctx) {
-      if (__DEV__) {
-        return ctx.header.origin
-      } else if (__TEST__) {
-        return 'http://122.51.11.77:81'
-      } else {
-        return 'http://122.51.11.77'
-      }
+      return ctx.header.origin
+      // if (__DEV__) {
+      //   return ctx.header.origin
+      // } else if (__TEST__) {
+      //   return 'http://122.51.11.77:81'
+      // } else {
+      //   return 'http://122.51.11.77'
+      // }
     },
     methods: ['GET', 'POST', 'DELETE'],
     headers: ['Content-Type', 'Authorization']

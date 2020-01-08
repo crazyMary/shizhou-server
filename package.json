@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "NODE_ENV=dev ./node_modules/.bin/nodemon src/bin/www",
     "test": "NODE_ENV=test pm2 start src/bin/www",
-    "prd":"NODE_ENV=production pm2 start src/bin/www"
+    "prd": "NODE_ENV=production PORT=3334 pm2 start src/bin/www"
   },
   "dependencies": {
     "debug": "^4.1.1",
