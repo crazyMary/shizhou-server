@@ -3,7 +3,7 @@ const { __DEV__, __TEST__, __PRD__ } = require('./shared')
 module.exports = {
   db: {
     url: 'mongodb://122.51.11.77:27017/',
-    name: __DEV__ ? 'sz-test' : 'sz'
+    name: __PRD__ ? 'sz' : 'sz-test'
   },
   cors: {
     origin: function(ctx) {

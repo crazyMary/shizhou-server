@@ -13,7 +13,8 @@ router.post('/login', async ctx => {
     if (password === result.password) {
       let payload = {
         exp: Date.now() + jwtconf.exp,
-        name: result.username
+        uid: result._id,
+        role: result.role
       }
       result.token = jwt.encode(payload, jwtconf.secret)
       delete result.password
