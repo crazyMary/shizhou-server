@@ -15,9 +15,7 @@ module.exports = {
       // } else {
       //   return 'http://122.51.11.77'
       // }
-    },
-    methods: ['GET', 'POST', 'DELETE'],
-    headers: ['Content-Type', 'Authorization']
+    }
   },
   jwt: {
     secret: 'mooncake',

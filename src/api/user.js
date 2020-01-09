@@ -18,16 +18,18 @@ router.post('/login', async ctx => {
       result.token = jwt.encode(payload, jwtconf.secret)
       delete result.password
       reply = result
-    } else reply.message = '密码错误'
+    } else {
+      reply.message = '密码错误'
+    }
   } else {
     reply.message = '用户不存在'
   }
   ctx.body = reply
 })
 
-router.get('/info', async ctx => {
-  let token = ctx.header.authorization
-  console.log(token)
+router.post('/add', async ctx => {
+  await DB.insert(CLN, ctx.request.body)
+  ctx.body = ctx.request.body
 })
 
 module.exports = router.routes()
