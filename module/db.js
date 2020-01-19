@@ -29,7 +29,19 @@ class DB {
   findOne(CLN, condition) {
     return new Promise((resolve, reject) => {
       this.connect().then(db => {
-        const result = db.collection(CLN).findOne(condition, (err, docs) => {
+        db.collection(CLN).findOne(condition, (err, docs) => {
+          assert.equal(err, null)
+          resolve(docs)
+        })
+      })
+    })
+  }
+
+  find(CLN, condition, options) {
+    return new Promise((resolve, reject) => {
+      this.connect().then(db => {
+        const result = db.collection(CLN).find(condition, options)
+        result.toArray(function(err, docs) {
           assert.equal(err, null)
           resolve(docs)
         })

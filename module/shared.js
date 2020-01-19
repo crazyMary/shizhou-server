@@ -23,14 +23,14 @@ exports.authSign = info => {
     refreshToken: sign.encode(payload(info, refExp), secret)
   }
 }
-exports.serverHost = function() {
-  const ENV = process.env.NODE_ENV
-  switch (ENV) {
-    case 'dev':
-      return '//localhost:3333'
-    case 'test':
-      return '//122.51.11.77:3333'
-    case 'production':
-      return '//122.51.11.77:3334'
-  }
-}
+// exports.serverHost = function() {
+//   const ENV = process.env.NODE_ENV
+//   switch (ENV) {
+//     case 'dev':
+//       return '//localhost:3333'
+//     case 'test':
+//       return '//122.51.11.77:3333'
+//     case 'production':
+//       return '//122.51.11.77:3334'
+//   }
+// }
