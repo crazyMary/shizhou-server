@@ -7,8 +7,10 @@ const logger = require('koa-logger')
 const cors = require('koa2-cors')
 const koajwt = require('koa-jwt')
 const netgate = require('./middleware/netgate')
-const api = require('./api')
-const { cors: corsconf, jwt: jwtconf } = require('./module/conf')
+const static = require('koa-static')
+const privateApi = require('./api/private')
+const publicApi = require('./api/public')
+const { cors: corsconf, jwt: jwtconf, UPLOAD_DIR } = require('./module/conf')
 
 // error handler
 onerror(app)
@@ -22,9 +24,13 @@ app.use(
 app.use(json())
 app.use(logger())
 app.use(cors(corsconf))
+app.use(static(UPLOAD_DIR))
+app.use(
+  koajwt({ secret: jwtconf.secret }).unless({
+    path: [/\api\/public/]
+  })
+)
 app.use(netgate)
-app.use(koajwt({ secret: jwtconf.secret }).unless({ path: [/login$/] }))
-
 // logger
 app.use(async (ctx, next) => {
   const start = new Date()
@@ -34,7 +40,8 @@ app.use(async (ctx, next) => {
 })
 
 // api routes
-app.use(api.routes(), api.allowedMethods())
+app.use(privateApi.routes(), privateApi.allowedMethods())
+app.use(publicApi.routes(), publicApi.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {

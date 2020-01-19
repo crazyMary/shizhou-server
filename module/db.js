@@ -1,6 +1,6 @@
 const assert = require('assert')
 const { MongoClient, ObjectID } = require('mongodb')
-const { db: dbconf } = require('./conf.js')
+const { db: dbconf } = require('./conf')
 
 class DB {
   static getInstance() {

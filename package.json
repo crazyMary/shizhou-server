@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=dev ./node_modules/.bin/nodemon src/bin/www",
-    "test": "NODE_ENV=test pm2 start src/bin/www",
-    "prd": "NODE_ENV=production PORT=3334 pm2 start src/bin/www"
+    "dev": "NODE_ENV=dev ./node_modules/.bin/nodemon bin/www",
+    "test": "NODE_ENV=test pm2 start bin/www",
+    "prd": "NODE_ENV=production PORT=3334 pm2 start bin/www"
   },
   "dependencies": {
     "debug": "^4.1.1",
+    "fs-extra": "^8.1.0",
     "jwt-simple": "^0.5.6",
     "koa": "^2.7.0",
     "koa-bodyparser": "^4.2.1",
@@ -18,8 +19,10 @@
     "koa-logger": "^3.2.0",
     "koa-onerror": "^4.1.0",
     "koa-router": "^7.4.0",
+    "koa-static": "^5.0.0",
     "koa2-cors": "^2.0.6",
-    "mongodb": "^3.4.1"
+    "mongodb": "^3.4.1",
+    "multiparty": "^4.2.1"
   },
   "devDependencies": {
     "husky": "^3.1.0",
