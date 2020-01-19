@@ -15,7 +15,7 @@ router.post('/login', async ctx => {
       result.token = token
       result.refreshToken = refreshToken
       delete result.password
-      reply = result
+      return (ctx.body = result)
     } else {
       reply.message = '密码错误'
     }

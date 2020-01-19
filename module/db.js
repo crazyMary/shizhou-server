@@ -49,14 +49,18 @@ class DB {
     })
   }
 
-  update(CLN, json1, json2) {
+  findOneAndUpdate(CLN, filter, update) {
     return new Promise((resolve, reject) => {
       this.connect().then(db => {
-        db.collection(CLN).updateOne(json1, { $set: json2 }, (err, result) => {
-          assert.equal(err, null)
-          assert.equal(1, result.result.n)
-          resolve(result)
-        })
+        db.collection(CLN).findOneAndUpdate(
+          filter,
+          { $set: update },
+          (err, result) => {
+            assert.equal(err, null)
+            assert.equal(1, result.ok)
+            resolve(result)
+          }
+        )
       })
     })
   }
@@ -66,7 +70,7 @@ class DB {
       this.connect().then(db => {
         db.collection(CLN).insertMany(rest, function(err, result) {
           assert.equal(err, null)
-          assert.equal(1, result.result.n)
+          assert.equal(1, result.ok)
           resolve(result)
         })
       })
@@ -78,7 +82,7 @@ class DB {
       this.connect().then(db => {
         db.collection(CLN).removeOne(json, function(err, result) {
           assert.equal(err, null)
-          assert.equal(1, result.result.n)
+          assert.equal(1, result.ok)
           resolve(result)
         })
       })

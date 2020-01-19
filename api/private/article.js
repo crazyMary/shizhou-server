@@ -12,4 +12,10 @@ router.get('/list', async ctx => {
   ctx.body = res
 })
 
+router.post('/update', async ctx => {
+  const { _id, ...rest } = ctx.request.body
+  await DB.findOneAndUpdate(CLN, { _id: DB.getObjectId(_id) }, rest)
+  ctx.body = {}
+})
+
 module.exports = router.routes()
