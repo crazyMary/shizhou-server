@@ -24,7 +24,7 @@ app.use(
 app.use(json())
 app.use(logger())
 app.use(cors(corsconf))
-app.use(static(UPLOAD_DIR))
+app.use(static(UPLOAD_DIR, { maxage: 1000 * 60 * 60 * 24 * 30 }))
 app.use(
   koajwt({ secret: jwtconf.secret }).unless({
     path: [/\api\/public/]
